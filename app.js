@@ -108,6 +108,15 @@ formulario.addEventListener("submit", function (evento) {
     return;
   }
 
+  var ocupado = turnos.some(function (turno) {
+    return turno.dia === dia.value && turno.hora === hora.value;
+  });
+
+  if (ocupado) {
+    mostrarAviso("Ese horario ya está ocupado. Elegí otro día u hora.");
+    return;
+  }
+
   turnos.push({
     nombre: clienteEscrito,
     dia: dia.value,
